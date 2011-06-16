@@ -9,17 +9,31 @@ http://www.mark-a-spot.org
 @link       http://mark-a-spot.org/
 @version    0.1
  
+h2. REST-Plugin 
+
+First get Kevin van Zonneveld's REST Plugin 
+https://github.com/kvz/cakephp-rest-plugin
+
+ 
 h2. Adding the plugin to your app_controller
 
-h2. Adding custom ReST-Routes to your @conf/routes.php@ file
+Simply add the plugin as a another component 
 
-pre. /**
- * Routing for Open311 Plugin
- */
-Router::connect("/open311/requests",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'requests', '[method]' => 'GET'));
+pre. $component = array( ... ,'Open311.Open311');
 
-pre. Router::connect("/open311/services",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'services', '[method]' => 'GET'));
+h2. Adding custom REST-Routes
 
-pre. Router::connect("/open311/requests/:id",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'request', '[method]' => 'GET'),array('id' => '[0-9]+|[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}', 'pass' => array('id')));
+Open config/routes.php and paste the lines to your @routes.php@ located in your installation's config directory.
+Service endpoint will be @/open311/@ as controller with custom actions in REST-Format
 
-pre. Router::connect("/open311/requests",array('plugin' => 'open311' ,'controller' => 'open311','action' => 'add', '[method]' => 'POST'),array('id' => '[0-9]+|[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}', 'pass' => array('id')));
+
+h2. things to do:
+
+* adding JSON Support, 
+* adding DELETE Requests
+* adding GET Service Defininiton
+* adding GET request_id from token
+* adding jurisdiction ID where and if neccessary
+
+* custom validation for requests 
+* better error handling
