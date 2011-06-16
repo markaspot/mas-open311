@@ -1,0 +1,25 @@
+h1. Mark-a-Spot Plugin for GeoReport V2 Reports
+
+Copyright (c) 2010, 2011 Holger Kreis
+http://www.mark-a-spot.org
+
+
+@copyright  2010, 2011 Holger Kreis <holger[at]markaspot.org>
+@license    http://www.gnu.org/licenses/agpl-3.0.txt GNU Affero General Public License
+@link       http://mark-a-spot.org/
+@version    0.1
+ 
+h2. Adding the plugin to your app_controller
+
+h2. Adding custom ReST-Routes to your @conf/routes.php@ file
+
+pre. /**
+ * Routing for Open311 Plugin
+ */
+Router::connect("/open311/requests",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'requests', '[method]' => 'GET'));
+
+pre. Router::connect("/open311/services",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'services', '[method]' => 'GET'));
+
+pre. Router::connect("/open311/requests/:id",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'request', '[method]' => 'GET'),array('id' => '[0-9]+|[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}', 'pass' => array('id')));
+
+pre. Router::connect("/open311/requests",array('plugin' => 'open311' ,'controller' => 'open311','action' => 'add', '[method]' => 'POST'),array('id' => '[0-9]+|[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}', 'pass' => array('id')));
