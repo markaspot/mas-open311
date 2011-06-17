@@ -7,24 +7,26 @@ http://www.mark-a-spot.org
 license    http://www.gnu.org/licenses/agpl-3.0.txt GNU Affero General Public License
 link       http://mark-a-spot.org/
 version    0.1
- 
-h2. Install REST-Plugin
 
-First get Kevin van Zonneveld's REST Plugin 
+h2. Implementation
+
+h3. Install REST-Plugin
+
+First get Kevin van Zonneveld's REST Plugin and put it into your plugin's directry
 https://github.com/kvz/cakephp-rest-plugin
 
-h2. Install Open311-Plugin
+h3. Install Open311-Plugin
 
 pre. git submodule add git://github.com/markaspot/mas-open311.git plugins/open311
 git submodule update --init
 
-h2. Adding the plugin to your app_controller
+h3. Adding the plugin to your app_controller
 
 Simply add the plugin as a another component 
 
 pre. $component = array( ... ,'Open311.Open311');
 
-h2. Adding custom REST-Routes
+h3. Adding custom REST-Routes
 
 Open @open311/config/routes.php@ and paste the lines to your @app/config/routes.php@.
 Service endpoint will be @/open311/@ as controller and custom actions in REST-format
