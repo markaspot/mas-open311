@@ -51,30 +51,37 @@ class Open311Controller extends AppController {
 	);
 	
 	public function beforeFilter () {
-		// Try to login user via REST	
+		// Try to login user via REST
 		if ($this->Rest->isActive()) {
 
-			//$this->Auth->autoRedirect = false;
-			$credentials = $this->Rest->credentials();
-		
-			$credentials["email_address"] = $credentials["username"];
-			$credentials["password"] = $this->Auth->password($credentials["password"]);
-			$this->Auth->fields = array('username' => 'email_address', 'password' => 'password');
+			if ($this->Auth->user('id')) {
+				$success = true;
+				$credentials['apikey'] = $this->params['url']['apikey'];
+			} else {
+
+				$credentials = $this->Rest->credentials();
 			
-			$success = $this->Auth->login($credentials);
+				$credentials["email_address"] = $credentials["username"];
+				$credentials["password"] = $this->Auth->password($credentials["password"]);
+				$this->Auth->fields = array('username' => 'email_address', 'password' => 'password');
+				
+				$success = $this->Auth->login($credentials);
+			}
 			
 			if (!$success) {
-				$msg = sprintf('Unable to log you in with the supplied credentials. ');
+				$msg = sprintf('Unable to log you in with the supplied credentials.');
 				return $this->Rest->abort(array('status' => '401', 'error' => $msg));
 			} 
 			
 			// Additionally Check API key 
 			$apikey = "MasAPIkey";
+			
 			if ($apikey !== $credentials['apikey']) {
 				$this->Auth->logout();
 				$msg = sprintf('Invalid API key: "%s"', $credentials['apikey']);
 				return $this->Rest->abort(array('status' => '401', 'error' => $msg));
 			}
+
 		}
 		parent::beforeFilter();
 	}

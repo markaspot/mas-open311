@@ -22,7 +22,7 @@ git submodule update --init
 
 h3. Adding the plugin to your app_controller
 
-Simply add the plugin as a another component 
+Simply add the plugin as another component.
 
 pre. $component = array( ... ,'Open311.Open311');
 
