@@ -4,6 +4,7 @@
 /**
  * Routing for Open311 Plugin
  */
+	Router::parseExtensions('json','xml');
 
 	Router::connect("/open311/requests",array('plugin' => 'open311' , 'controller' => 'open311','action' => 'requests', '[method]' => 'GET'));
 
