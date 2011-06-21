@@ -54,7 +54,7 @@ class Open311Controller extends AppController {
 		// Try to login user via REST
 		if ($this->Rest->isActive()) {
 
-			if ($this->Auth->user('id')) {
+			if ($this->Auth->user('id') && $this->params['url']['apikey']) {
 				$success = true;
 				$credentials['apikey'] = $this->params['url']['apikey'];
 			} else {
