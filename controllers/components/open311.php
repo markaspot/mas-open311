@@ -125,5 +125,22 @@ class Open311Component extends Object {
 
 		return $this->data;
 	}
+	
+	
+function mapConfigDiscovery() {
+		Configure::load('open311');
+		
+		$discovery['changeset'] = Configure::read('open311.changeset');
+		$discovery['contact'] = Configure::read('open311.contact');
+		$discovery['key_service'] = Configure::read('open311.contact');
+		$discovery['endpoints']['specification'] = "http://wiki.open311.org/GeoReport_v2";
+		$discovery['endpoints']['endpoint']['url'] = Configure::read('open311.url');
+		$discovery['endpoints']['endpoint']['changeset'] = "http://wiki.open311.org/GeoReport_v2";
+		$discovery['endpoints']['endpoint']['type'] = Configure::read('open311.type');
+		$discovery['endpoints']['endpoint']['url'] = Configure::read('open311.url');
+		$discovery['endpoints']['endpoint']['formats'] = Configure::read('open311.formats');
+		return $discovery;
+
+	}
 
 }

@@ -20,6 +20,10 @@ h3. Install Open311-Plugin
 pre. git submodule add git://github.com/markaspot/mas-open311.git plugins/open311
 git submodule update --init
 
+h3. Copy config file
+
+Copy @plugins/config/open311.php@ in @app/config/@
+
 h3. Adding the plugin to your app_controller
 
 Simply add the plugin as another component.
@@ -34,11 +38,10 @@ Service endpoint will be @/open311/@ as controller and custom actions in REST-fo
 
 h2. Things to do:
 
-* adding JSON Support, 
-* adding DELETE Requests
+* -adding JSON Support- 
 * adding GET Service Defininiton
-* adding GET request_id from token
-* adding jurisdiction ID where and if neccessary
+* -adding jurisdiction ID where and if neccessary-
+* -adding Service Discovery-
 
 * custom validation for requests 
 * better error handling

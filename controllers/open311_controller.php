@@ -52,6 +52,8 @@ class Open311Controller extends AppController {
 	
 	public function beforeFilter () {
 		// Try to login user via REST
+		$this->Auth->allow(array('discovery'));
+
 		if ($this->Rest->isActive()) {
 
 			if ($this->Auth->user('id') && $this->params['url']['apikey']) {
@@ -167,6 +169,18 @@ class Open311Controller extends AppController {
 		$services = $this->Open311->mapCategories($categories);
 		$this->set(compact('services'));
 		$this->render('services');
+	}
+	
+	
+	/**
+	* method to describe api
+	*
+	* @return void
+	*/
+
+	function discovery(){
+		$discovery = $this->Open311->mapConfigDiscovery();
+		$this->set(compact('discovery'));
 	}
 
 	/**

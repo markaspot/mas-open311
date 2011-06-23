@@ -14,7 +14,6 @@
 
 	Router::connect("/open311/requests",array('plugin' => 'open311' ,'controller' => 'open311','action' => 'add', '[method]' => 'POST'),array('id' => '[0-9]+|[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}', 'pass' => array('id')));
 	
-	
-	//Router::connect("/open311/service/",array('controller' => 'open311', "action" => "service", "[method]" => "GET"));
+	Router::connect("/open311/discovery",array('plugin' => 'open311' ,'controller' => 'open311','action' => 'discovery', '[method]' => 'GET'));
 
 ?>
