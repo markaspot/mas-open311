@@ -12,6 +12,6 @@ $config['open311']['key_service'] = "You can request a key here: http://api.mas-
 $config['open311']['url'] = "http://mas-city.com/open311"; 
 
 $config['open311']['type'] = "test"; // production, test, dev
-$config['open311']['formats'] = array('format'=>'text/xml','format' => 'application/json');
+$config['open311']['formats'] = array('format' => array('text/xml', 'application/json'));
 
 ?>
